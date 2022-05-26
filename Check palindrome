@@ -1,0 +1,57 @@
+class Solution
+{
+     Node reverseList(Node head)
+    {
+        // code here
+       if(head==null || head.next==null){
+           return head;
+       }
+       
+       Node next=null;
+       Node curr=head;
+       Node prev=null;
+       while(curr!=null){
+           next=curr.next;
+           curr.next=prev;
+           prev=curr;
+           curr=next;
+       }
+      head=prev;
+       
+       return head;
+    }
+    Node findMid(Node head){
+        Node slow=head;
+        Node fast=head.next;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        return slow;
+    }
+    //Function to check whether the list is palindrome.
+    boolean isPalindrome(Node head) 
+    {
+       if(head==null || head.next==null){
+           return true;
+       }
+       Node s=head;
+       Node mid=findMid(head);
+       Node t=mid.next;
+       
+       mid.next=reverseList(t);
+       Node temp=mid.next;
+       while(temp!=null){
+           if(s.data!=temp.data)
+           return false;
+           else
+           temp=temp.next;
+           s=s.next;
+       }
+       Node r=mid.next;
+      mid.next=reverseList(r);
+        
+        return true;
+    }    
+}
+
