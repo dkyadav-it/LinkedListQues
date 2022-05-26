@@ -1,0 +1,42 @@
+// count value of 0 1 2 and place in ll
+class Solution
+{
+    //Function to sort a linked list of 0s, 1s and 2s.
+    static Node segregate(Node head)
+    {
+        // add your code here
+        int count1=0;
+        int count2=0;
+        int count3=0;
+        Node temp=head;
+        while(temp!=null){
+            if(temp.data==0)
+            count1++;
+            else if(temp.data==1)
+            count2++;
+            else
+            count3++;
+            
+            temp=temp.next;
+        }
+       // System.out.println(count1+"  "+count2+"  "+count3);
+        Node t=head;
+        while(count1>0){
+            t.data=0;
+            t=t.next;
+            count1--;
+        }
+        while(count2>0){
+            t.data=1;
+            t=t.next;
+            count2--;
+        }
+        while(count3>0){
+            t.data=2;
+            t=t.next;
+            count3--;
+        }
+        
+        return head;
+    }
+}
