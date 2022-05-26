@@ -1,0 +1,49 @@
+class Solution
+{
+    int getMiddle(Node head)
+    {
+         // Your code here.
+         int count=0;
+         Node curr=head;
+         while(curr!=null){
+             count++;
+             curr=curr.next;
+         }
+         Node temp=head;
+         int len=count/2;
+         while(len!=0){
+             temp=temp.next;
+             len--;
+         }
+        //  System.out.println(count);
+        //  if(count%2==0)
+        //  return temp.next.data;
+        //  else
+         return temp.data;
+    }
+}
+
+//2nd using two pointer
+class Solution
+{
+    int getMiddle(Node head)
+    {
+         // Your code here.
+        Node slow=head;
+        Node fast=head.next;
+        int count=0;
+        Node temp=head;
+        while(temp!=null){
+            count++;
+            temp=temp.next;
+        }
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+         if(count%2==0)
+         return slow.next.data;
+         else
+         return slow.data;
+    }
+}
