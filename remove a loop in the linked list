@@ -1,0 +1,19 @@
+  //Function to remove a loop in the linked list.
+    public static void removeLoop(Node head){
+        // code here
+        // remove the loop without losing any nodes
+        HashMap<Node,Boolean> hm=new HashMap<>();
+        Node curr=head;
+        Node prev=null;
+        while(curr.next!=null){
+            
+            if(hm.containsKey(curr.next)){
+                curr.next=null;
+            }
+            else{
+               // prev=curr;
+                hm.put(curr,true);
+                curr=curr.next;
+            }
+        }
+    }
