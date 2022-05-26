@@ -1,0 +1,27 @@
+class Solution
+{
+    //Function to remove duplicates from unsorted linked list.
+    public Node removeDuplicates(Node head) 
+    {
+         // Your code here
+         if(head==null || head.next==null)
+         return head;
+         
+         HashMap<Integer,Boolean> h=new HashMap<>();
+         Node temp=head;
+         h.put(temp.data, true);
+         
+         while(temp.next!=null){
+             if(h.containsKey(temp.next.data)){
+                 temp.next=temp.next.next;
+             }else{
+                 h.put(temp.next.data,true);
+                 temp=temp.next;
+             }
+         }
+         return head;
+    }
+}
+
+//2nd approach
+//use 2 loops and check for individual elemnt time complexity O(n^2)
